@@ -13,53 +13,53 @@ import { useDrag } from 'react-dnd';
 const useStyles = makeStyles({ name: 'MUIDataTableHeadCell' })(theme => ({
   root: {},
   fixedHeader: {
-    position: 'sticky',
-    top: '0px',
-    zIndex: 100,
-    backgroundColor: theme.palette.background.paper,
+    position: 'sticky !important',
+    top: '0px !important',
+    zIndex: '100 !important',
+    backgroundColor: `${theme.palette.background.paper} !important`,
   },
   tooltip: {
-    cursor: 'pointer',
+    cursor: 'pointer !important',
   },
   mypopper: {
     '&[data-x-out-of-boundaries]': {
-      display: 'none',
+      display: 'none !important',
     },
   },
   data: {
-    display: 'inline-block',
+    display: 'inline-block !important',
   },
   sortAction: {
-    display: 'flex',
-    cursor: 'pointer',
+    display: 'flex !important',
+    cursor: 'pointer !important',
   },
   dragCursor: {
-    cursor: 'grab',
+    cursor: 'grab !important',
   },
   sortLabelRoot: {
-    height: '20px',
+    height: '20px !important',
   },
   sortActive: {
-    color: theme.palette.text.primary,
+    color: `${theme.palette.text.primary} !important`,
   },
   toolButton: {
-    textTransform: 'none',
-    marginLeft: '-8px',
-    minWidth: 0,
-    marginRight: '8px',
-    paddingLeft: '8px',
-    paddingRight: '8px',
+    textTransform: 'none !important',
+    marginLeft: '-8px !important',
+    minWidth: '0 !important',
+    marginRight: '8px !important',
+    paddingLeft: '8px !important',
+    paddingRight: '8px !important',
   },
   contentWrapper: {
-    display: 'flex',
-    alignItems: 'center',
+    display: 'flex !important',
+    alignItems: 'center !important',
   },
   hintIconAlone: {
-    marginTop: '-3px',
-    marginLeft: '3px',
+    marginTop: '-3px !important',
+    marginLeft: '3px !important',
   },
   hintIconWithSortIcon: {
-    marginTop: '-3px',
+    marginTop: '-3px !important',
   },
 }));
 
