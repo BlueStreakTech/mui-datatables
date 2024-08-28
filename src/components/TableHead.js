@@ -10,15 +10,15 @@ const useStyles = makeStyles({ name: 'MUIDataTableHead' })(theme => ({
   main: {},
   responsiveStacked: {
     [theme.breakpoints.down('md')]: {
-      display: 'none',
+      display: 'none !important',
     },
   },
   responsiveStackedAlways: {
-    display: 'none',
+    display: 'none !important',
   },
   responsiveSimple: {
     [theme.breakpoints.down('sm')]: {
-      display: 'none',
+      display: 'none !important',
     },
   },
 }));
