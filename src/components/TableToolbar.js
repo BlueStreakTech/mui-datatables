@@ -448,6 +448,7 @@ class TableToolbar extends React.Component {
               }
               content={
                 <TableFilterComponent
+                  data={data}
                   customFooter={options.customFilterDialogFooter}
                   columns={columns}
                   options={options}

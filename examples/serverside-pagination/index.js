@@ -14,12 +14,12 @@ class Example extends React.Component {
         name: 'fullName',
         label: 'Full Name',
         options: {
-          customBodyRender: (value, tableMeta, updateValue) => {
+          customBodyRender: (value, tableMeta, updateValue, data) => {
             // Here you can render a more complex display.
             // You're given access to tableMeta, which has
             // the rowData (as well as the original object data).
             // See the console for a detailed look at this object.
-
+            console.log("ORIGINAL_DATA", data);
             console.log('customBodyRender');
             console.dir(tableMeta);
             return value;

@@ -108,7 +108,7 @@ const STP = {
   REPLACE: 'replace',
   ABOVE: 'above',
   NONE: 'none',
-  ALWAYS: 'always'
+  ALWAYS: 'always',
 };
 
 class MUIDataTable extends React.Component {
@@ -978,6 +978,7 @@ class MUIDataTable extends React.Component {
           columnValue,
           tableMeta,
           this.updateDataCol.bind(null, rowIndex, index),
+          this.props.data[rowIndex],
         );
         columnDisplay = funcResult;
 
@@ -1933,7 +1934,8 @@ class MUIDataTable extends React.Component {
 
     return (
       <Paper elevation={this.options.elevation} ref={this.tableContent} className={paperClasses}>
-        {(this.options.selectToolbarPlacement === STP.ALWAYS || selectedRows.data.length > 0 && this.options.selectToolbarPlacement !== STP.NONE) && (
+        {(this.options.selectToolbarPlacement === STP.ALWAYS ||
+          (selectedRows.data.length > 0 && this.options.selectToolbarPlacement !== STP.NONE)) && (
           <TableToolbarSelectComponent
             options={this.options}
             selectedRows={selectedRows}

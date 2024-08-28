@@ -2,6 +2,7 @@ import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
 import uglify from '@lopatnov/rollup-plugin-uglify';
+import copy from 'rollup-plugin-copy';
 
 export default {
   input: 'src/index.js',
@@ -31,6 +32,11 @@ export default {
         comments: false,
       },
     }),
+    copy({
+      targets: [
+        { src: 'src/index.d.ts', dest: 'dist' },
+      ]
+    })
   ],
   output: {
     file: 'dist/index.js',
