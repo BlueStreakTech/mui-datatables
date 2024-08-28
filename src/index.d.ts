@@ -31,13 +31,13 @@ export interface MUIDataTableStateRows {
     lookup: any;
 }
 
-export interface MUIDataTableState {
+export interface MUIDataTableState<T> {
     activeColumn: string | null;
     announceText: string | null;
     columnOrder: number[];
-    columns: MUIDataTableColumnState[];
+    columns: MUIDataTableColumnState<T>[];
     count: number;
-    data: any[];
+    data: T[];
     displayData: DisplayData;
     expandedRows: MUIDataTableStateRows;
     filterData: string[][];
@@ -55,7 +55,7 @@ export interface MUIDataTableState {
 
 export interface MUIDataTableMeta<T = any> {
     currentTableData: MUIDataTableCurrentData[];
-    columnData: MUIDataTableColumnState;
+    columnData: MUIDataTableColumnState<T>;
     columnIndex: number;
     rowData: any[];
     rowIndex: number;
@@ -63,10 +63,10 @@ export interface MUIDataTableMeta<T = any> {
     tableState: MUIDataTableState;
 }
 
-export type MUIDataTableCustomHeadRenderer =
+export type MUIDataTableCustomHeadRenderer<T> =
     & Pick<MUIDataTableColumn, "name" | "label">
     & Pick<
-        MUIDataTableColumnOptions,
+        MUIDataTableColumnOptions<T>,
         | "customHeadRender"
         | "display"
         | "filter"
@@ -120,10 +120,11 @@ export interface MUIDataTableTextLabelsSelectedRows {
     text: string;
 }
 
-export interface MUIDataTableColumn {
+export interface MUIDataTableColumn<T> {
     label?: string | undefined;
     name: string;
-    options?: MUIDataTableColumnOptions | undefined;
+    options?: MUIDataTableColumnOptions<T> | undefined;
+    width?: string;
 }
 
 export interface MUIDataTableTextLabels {
@@ -196,17 +197,17 @@ export interface MUIDataTableCustomFilterListOptions {
         | undefined;
 }
 
-export interface MUIDataTableColumnState extends MUIDataTableColumnOptions {
+export interface MUIDataTableColumnState<T> extends MUIDataTableColumnOptions<T> {
     name: string;
     label?: string | undefined;
 }
 
-export interface CustomHeadLabelRenderOptions extends MUIDataTableColumnState {
+export interface CustomHeadLabelRenderOptions<T> extends MUIDataTableColumnState<T> {
     index: number;
     colPos: number;
 }
 
-export interface MUIDataTableColumnOptions {
+export interface MUIDataTableColumnOptions<T> {
     /**
      * Function that returns a string or React component.
      * Used to display data within all table cells of a given column.
@@ -216,7 +217,7 @@ export interface MUIDataTableColumnOptions {
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/component/index.js)
      */
     customBodyRender?:
-        | ((value: any, tableMeta: MUIDataTableMeta, updateValue: (value: string) => void) => string | React.ReactNode)
+        | ((value: any, tableMeta: MUIDataTableMeta, updateValue: (value: string) => void, data?: T) => (string | React.ReactNode))
         | undefined;
     /**
      * Similar to and performing better than `customBodyRender`, however with the following caveats:
@@ -231,7 +232,7 @@ export interface MUIDataTableColumnOptions {
      * Used for creating a custom header to a column.
      * This method only affects the display in the table's header, other areas of the table (such as the View Columns popover), will use the column's label.
      */
-    customHeadLabelRender?: ((options: CustomHeadLabelRenderOptions) => string | React.ReactNode) | undefined;
+    customHeadLabelRender?: ((options: CustomHeadLabelRenderOptions<T>) => string | React.ReactNode) | undefined;
     /**
      * These options only affect the filter chips that display after filter are selected.
      * To modify the filters themselves, see filterOptions.
@@ -242,7 +243,7 @@ export interface MUIDataTableColumnOptions {
     /** Function that returns a string or React component. Used as display for column header. */
     customHeadRender?:
         | ((
-            columnMeta: MUIDataTableCustomHeadRenderer,
+            columnMeta: MUIDataTableCustomHeadRenderer<T>,
             handleToggleColumn: (columnIndex: number) => void,
             sortOrder: MUISortOptions,
         ) => string | React.ReactNode)
@@ -313,7 +314,7 @@ export interface MUIDataTableColumnOptions {
      *
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/customize-styling/index.js)
      */
-    setCellHeaderProps?: ((columnMeta: MUIDataTableCustomHeadRenderer) => object) | undefined;
+    setCellHeaderProps?: ((columnMeta: MUIDataTableCustomHeadRenderer<T>) => object) | undefined;
     /**
      * Is called for each cell and allows to you return custom props for this cell based on its data.
      *
