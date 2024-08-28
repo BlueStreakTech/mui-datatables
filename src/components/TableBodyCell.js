@@ -6,86 +6,86 @@ import { makeStyles } from 'tss-react/mui';
 const useStyles = makeStyles({ name: 'MUIDataTableBodyCell' })(theme => ({
   root: {},
   cellHide: {
-    display: 'none',
+    display: 'none !important',
   },
   simpleHeader: {
     [theme.breakpoints.down('sm')]: {
-      display: 'inline-block',
-      fontWeight: 'bold',
-      width: '100%',
-      boxSizing: 'border-box',
+      display: 'inline-block !important',
+      fontWeight: 'bold !important',
+      width: '100% !important',
+      boxSizing: 'border-box !important',
     },
   },
   simpleCell: {
     [theme.breakpoints.down('sm')]: {
-      display: 'inline-block',
-      width: '100%',
-      boxSizing: 'border-box',
+      display: 'inline-block !important',
+      width: '100% !important',
+      boxSizing: 'border-box !important',
     },
   },
   stackedHeader: {
-    verticalAlign: 'top',
+    verticalAlign: 'top !important',
   },
   stackedCommon: {
     [theme.breakpoints.down('md')]: {
-      display: 'inline-block',
-      fontSize: '16px',
-      height: 'auto',
-      width: 'calc(50%)',
-      boxSizing: 'border-box',
+      display: 'inline-block !important',
+      fontSize: '16px !important',
+      height: 'aut !importanto',
+      width: 'calc(50%) !important',
+      boxSizing: 'border-box !important',
       '&:last-child': {
-        borderBottom: 'none',
+        borderBottom: 'none !important',
       },
       '&:nth-last-of-type(2)': {
-        borderBottom: 'none',
+        borderBottom: 'none !important',
       },
     },
   },
   stackedCommonAlways: {
-    display: 'inline-block',
-    fontSize: '16px',
-    height: 'auto',
-    width: 'calc(50%)',
-    boxSizing: 'border-box',
+    display: 'inline-block !important',
+    fontSize: '16px !important',
+    height: 'auto !important',
+    width: 'calc(50%) !important',
+    boxSizing: 'border-box !important',
     '&:last-child': {
-      borderBottom: 'none',
+      borderBottom: 'none !important',
     },
     '&:nth-last-of-type(2)': {
-      borderBottom: 'none',
+      borderBottom: 'none !important',
     },
   },
   stackedParent: {
     [theme.breakpoints.down('md')]: {
-      display: 'inline-block',
-      fontSize: '16px',
-      height: 'auto',
-      width: 'calc(100%)',
-      boxSizing: 'border-box',
+      display: 'inline-block !important',
+      fontSize: '16px !important',
+      height: 'auto !important',
+      width: 'calc(100%) !important',
+      boxSizing: 'border-box !important',
     },
   },
   stackedParentAlways: {
-    display: 'inline-block',
-    fontSize: '16px',
-    height: 'auto',
-    width: 'calc(100%)',
-    boxSizing: 'border-box',
+    display: 'inline-block !important',
+    fontSize: '16px !important',
+    height: 'auto !important',
+    width: 'calc(100%) !important',
+    boxSizing: 'border-box !important',
   },
   cellStackedSmall: {
     [theme.breakpoints.down('md')]: {
-      width: '50%',
-      boxSizing: 'border-box',
+      width: '50% !important',
+      boxSizing: 'border-box !important',
     },
   },
   responsiveStackedSmall: {
     [theme.breakpoints.down('md')]: {
-      width: '50%',
-      boxSizing: 'border-box',
+      width: '50% !important',
+      boxSizing: 'border-box !important',
     },
   },
   responsiveStackedSmallParent: {
     [theme.breakpoints.down('md')]: {
-      width: '100%',
-      boxSizing: 'border-box',
+      width: '100% !important',
+      boxSizing: 'border-box !important',
     },
   },
 }));
