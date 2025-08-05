@@ -128,7 +128,7 @@ const TableHead = ({
           ({ column, index, colPos }) =>
             column.display === 'true' &&
             (column.customHeadRender ? (
-              column.customHeadRender({ index, ...column, colPos, setCellRef, options, updateColumnOrder, columnOrder, timers, draggingHook: [dragging, setDragging], draggableHeadCellRefs, tableRef, tableId }, handleToggleColumn, sortOrder)
+              column.customHeadRender({ index, ...column, colPos, }, handleToggleColumn, sortOrder, { columns, column, setCellRef, options, updateColumnOrder, columnOrder, timers, draggingHook: [dragging, setDragging], draggableHeadCellRefs, tableRef, tableId, components })
             ) : (
               <TableHeadCell
                 cellHeaderProps={
