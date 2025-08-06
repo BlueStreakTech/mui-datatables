@@ -188,6 +188,15 @@ const TableHeadCell = ({
     setSortTooltipOpen(false);
   };
 
+  const buttonProps = {
+    variant: "",
+    onKeyUp: handleKeyboardSortInput,
+    onClick: handleSortClick,
+    className: classes.toolButton,
+    "data-testid": `headcol-${index}`,
+    ref: isDraggingEnabled() ? dragRef : null,
+}
+
   return (
     <TableCell
       ref={ref => {
@@ -213,27 +222,24 @@ const TableHeadCell = ({
               tooltip: classes.tooltip,
               popper: classes.mypopper,
             }}>
-            <Button
-              variant=""
-              onKeyUp={handleKeyboardSortInput}
-              onClick={handleSortClick}
-              className={classes.toolButton}
-              data-testid={`headcol-${index}`}
-              ref={isDraggingEnabled() ? dragRef : null}>
-              <div className={classes.sortAction}>
-                <div
-                  className={clsx({
-                    [classes.data]: true,
-                    [classes.sortActive]: sortActive,
-                    [classes.dragCursor]: isDraggingEnabled(),
-                  })}>
-                  {children}
-                </div>
-                <div className={classes.sortAction}>
-                  <TableSortLabel {...sortLabelProps} />
-                </div>
-              </div>
-            </Button>
+              {column.cusomHeadCellButtonRender
+                  ? column.cusomHeadCellButtonRender({ buttonProps, clsx, classes, sortActive, isDraggingEnabled, sortLabelProps })
+                  : <Button
+                    {...buttonProps}>
+                    <div className={classes.sortAction}>
+                      <div
+                        className={clsx({
+                          [classes.data]: true,
+                          [classes.sortActive]: sortActive,
+                          [classes.dragCursor]: isDraggingEnabled(),
+                        })}>
+                        {children}
+                      </div>
+                      <div className={classes.sortAction}>
+                        <TableSortLabel {...sortLabelProps} />
+                      </div>
+                    </div>
+                  </Button>}            
           </Tooltip>
           {hint && (
             <Tooltip title={hint}>

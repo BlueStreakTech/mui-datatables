@@ -1227,12 +1227,12 @@ class MUIDataTable extends React.Component {
     return tableProps;
   }
 
-  toggleSortColumn = index => {
+  toggleSortColumn = (index, direction) => {
     this.setState(
       prevState => {
         let columns = cloneDeep(prevState.columns);
         let data = prevState.data;
-        let newOrder = columns[index].sortDescFirst ? 'desc' : 'asc'; // default
+        let newOrder = (direction ?? columns[index].sortDescFirst ? 'desc' : 'asc'); // default
 
         let sequenceOrder = ['asc', 'desc'];
         if (columns[index].sortDescFirst) {
