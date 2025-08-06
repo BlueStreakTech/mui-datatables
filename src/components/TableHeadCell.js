@@ -222,8 +222,8 @@ const TableHeadCell = ({
               tooltip: classes.tooltip,
               popper: classes.mypopper,
             }}>
-              {column.cusomHeadCellButtonRender
-                  ? column.cusomHeadCellButtonRender({ buttonProps, clsx, classes, sortActive, isDraggingEnabled, sortLabelProps })
+              {column.customHeadCellButtonRender
+                  ? column.customHeadCellButtonRender({ buttonProps, clsx, classes, sortActive, isDraggingEnabled, sortLabelProps })
                   : <Button
                     {...buttonProps}>
                     <div className={classes.sortAction}>
