@@ -51,8 +51,8 @@ const TableHead = ({
 
   const [dragging, setDragging] = useState(false);
 
-  const handleToggleColumn = index => {
-    toggleSort(index);
+  const handleToggleColumn = (index, direction) => {
+    toggleSort(index, direction);
   };
 
   const handleRowSelect = () => {
