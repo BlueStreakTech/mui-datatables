@@ -195,7 +195,19 @@ const TableHeadCell = ({
     className: classes.toolButton,
     "data-testid": `headcol-${index}`,
     ref: isDraggingEnabled() ? dragRef : null,
-}
+  }
+
+  const tooltipProps = {
+    title: getTooltipTitle,
+    placement: "bottom",
+    open: sortTooltipOpen,
+    onOpen: () => (dragging ? setSortTooltipOpen(false) : setSortTooltipOpen(true)),
+    onClose: () => setSortTooltipOpen(false),
+    classes: {
+      tooltip: classes.tooltip,
+      popper: classes.mypopper,
+    }
+  }
 
   return (
     <TableCell
@@ -213,7 +225,7 @@ const TableHeadCell = ({
       {options.sort && sort ? (
         <span className={classes.contentWrapper}>
               {column.customHeadCellButtonRender
-                  ? column.customHeadCellButtonRender({ buttonProps, clsx, classes, index, sortActive, toggleSort, isDraggingEnabled, sortLabelProps })
+                  ? column.customHeadCellButtonRender({ buttonProps, clsx, classes, index, sortActive, toggleSort, isDraggingEnabled, sortLabelProps, tooltipProps })
                   : 
               <Tooltip
                 title={getTooltipTitle()}

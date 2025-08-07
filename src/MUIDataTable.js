@@ -1243,7 +1243,7 @@ class MUIDataTable extends React.Component {
           sequenceOrder.push('none');
         }
 
-        console.log('column sort:', index, direction);
+        //console.log('column sort:', index, direction);
         if (columns[index].name === this.state.sortOrder.name) {
           let pos = sequenceOrder.indexOf(this.state.sortOrder.direction);
           if (pos !== -1) {
