@@ -212,19 +212,19 @@ const TableHeadCell = ({
       {...otherProps}>
       {options.sort && sort ? (
         <span className={classes.contentWrapper}>
-          <Tooltip
-            title={getTooltipTitle()}
-            placement="bottom"
-            open={sortTooltipOpen}
-            onOpen={() => (dragging ? setSortTooltipOpen(false) : setSortTooltipOpen(true))}
-            onClose={() => setSortTooltipOpen(false)}
-            classes={{
-              tooltip: classes.tooltip,
-              popper: classes.mypopper,
-            }}>
               {column.customHeadCellButtonRender
-                  ? column.customHeadCellButtonRender({ buttonProps, clsx, classes, sortActive, isDraggingEnabled, sortLabelProps })
-                  : <Button
+                  ? column.customHeadCellButtonRender({ buttonProps, clsx, classes, sortActive, toggleSort, isDraggingEnabled, sortLabelProps })
+                  : 
+              <Tooltip
+                title={getTooltipTitle()}
+                placement="bottom"
+                open={sortTooltipOpen}
+                onOpen={() => (dragging ? setSortTooltipOpen(false) : setSortTooltipOpen(true))}
+                onClose={() => setSortTooltipOpen(false)}
+                classes={{
+                  tooltip: classes.tooltip,
+                  popper: classes.mypopper,
+                }}><Button
                     {...buttonProps}>
                     <div className={classes.sortAction}>
                       <div
@@ -239,8 +239,8 @@ const TableHeadCell = ({
                         <TableSortLabel {...sortLabelProps} />
                       </div>
                     </div>
-                  </Button>}            
-          </Tooltip>
+                  </Button>       
+            </Tooltip>}     
           {hint && (
             <Tooltip title={hint}>
               <HelpIcon
