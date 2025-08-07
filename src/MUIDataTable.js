@@ -1233,7 +1233,7 @@ class MUIDataTable extends React.Component {
       prevState => {
         let columns = cloneDeep(prevState.columns);
         let data = prevState.data;
-        let newOrder = (direction ?? columns[index].sortDescFirst ? 'desc' : 'asc'); // default
+        let newOrder = (columns[index].sortDescFirst ? 'desc' : 'asc'); // default
 
         let sequenceOrder = ['asc', 'desc'];
         if (columns[index].sortDescFirst) {
@@ -1243,12 +1243,13 @@ class MUIDataTable extends React.Component {
           sequenceOrder.push('none');
         }
 
+        console.log('column sort:', index, direction);
         if (columns[index].name === this.state.sortOrder.name) {
           let pos = sequenceOrder.indexOf(this.state.sortOrder.direction);
           if (pos !== -1) {
             pos++;
             if (pos >= sequenceOrder.length) pos = 0;
-            newOrder = sequenceOrder[pos];
+            newOrder = direction ?? sequenceOrder[pos];
           }
         }
 
