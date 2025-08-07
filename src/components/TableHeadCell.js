@@ -213,7 +213,7 @@ const TableHeadCell = ({
       {options.sort && sort ? (
         <span className={classes.contentWrapper}>
               {column.customHeadCellButtonRender
-                  ? column.customHeadCellButtonRender({ buttonProps, clsx, classes, sortActive, toggleSort, isDraggingEnabled, sortLabelProps })
+                  ? column.customHeadCellButtonRender({ buttonProps, clsx, classes, index, sortActive, toggleSort, isDraggingEnabled, sortLabelProps })
                   : 
               <Tooltip
                 title={getTooltipTitle()}
