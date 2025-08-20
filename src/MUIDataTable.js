@@ -146,6 +146,7 @@ class MUIDataTable extends React.Component {
             customHeadRender: PropTypes.func,
             customBodyRender: PropTypes.func,
             customBodyRenderLite: PropTypes.func,
+            customHeadCellButtonRender: PropTypes.func,
             customHeadLabelRender: PropTypes.func,
             customFilterListOptions: PropTypes.oneOfType([
               PropTypes.shape({
@@ -1227,12 +1228,12 @@ class MUIDataTable extends React.Component {
     return tableProps;
   }
 
-  toggleSortColumn = index => {
+  toggleSortColumn = (index, direction) => {
     this.setState(
       prevState => {
         let columns = cloneDeep(prevState.columns);
         let data = prevState.data;
-        let newOrder = columns[index].sortDescFirst ? 'desc' : 'asc'; // default
+        let newOrder = (columns[index].sortDescFirst ? 'desc' : 'asc'); // default
 
         let sequenceOrder = ['asc', 'desc'];
         if (columns[index].sortDescFirst) {
@@ -1242,12 +1243,13 @@ class MUIDataTable extends React.Component {
           sequenceOrder.push('none');
         }
 
+        //console.log('column sort:', index, direction);
         if (columns[index].name === this.state.sortOrder.name) {
           let pos = sequenceOrder.indexOf(this.state.sortOrder.direction);
           if (pos !== -1) {
             pos++;
             if (pos >= sequenceOrder.length) pos = 0;
-            newOrder = sequenceOrder[pos];
+            newOrder = direction ?? sequenceOrder[pos];
           }
         }
 

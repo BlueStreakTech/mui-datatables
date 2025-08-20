@@ -51,8 +51,8 @@ const TableHead = ({
 
   const [dragging, setDragging] = useState(false);
 
-  const handleToggleColumn = index => {
-    toggleSort(index);
+  const handleToggleColumn = (index, direction) => {
+    toggleSort(index, direction);
   };
 
   const handleRowSelect = () => {
@@ -128,7 +128,7 @@ const TableHead = ({
           ({ column, index, colPos }) =>
             column.display === 'true' &&
             (column.customHeadRender ? (
-              column.customHeadRender({ index, ...column }, handleToggleColumn, sortOrder)
+              column.customHeadRender({ index, ...column, colPos, }, handleToggleColumn, sortOrder, { columns, column, setCellRef, options, updateColumnOrder, columnOrder, timers, draggingHook: [dragging, setDragging], draggableHeadCellRefs, tableRef, tableId, components })
             ) : (
               <TableHeadCell
                 cellHeaderProps={
