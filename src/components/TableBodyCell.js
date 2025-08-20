@@ -30,7 +30,7 @@ const useStyles = makeStyles({ name: 'MUIDataTableBodyCell' })(theme => ({
     [theme.breakpoints.down('md')]: {
       display: 'inline-block !important',
       fontSize: '16px !important',
-      height: 'aut !importanto',
+      height: 'auto !important',
       width: 'calc(50%) !important',
       boxSizing: 'border-box !important',
       '&:last-child': {
